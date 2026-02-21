@@ -76,6 +76,7 @@ sub-exp1
 │   └── vite.svg
 │
 ├── src
+│   ├── Student.jsx
 │   ├── App.jsx
 │   ├── App.css
 │   ├── main.jsx
