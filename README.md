@@ -109,7 +109,6 @@ The application displays:
 * Clean card UI with gradient background
 
 ###  Screenshot
-
 <img width="960" height="476" alt="{63442637-1052-4734-A82A-65479C7A060C}" src="https://github.com/user-attachments/assets/43e114be-b622-40a0-b533-937d05b20613" />
 
 
