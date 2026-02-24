@@ -1,49 +1,56 @@
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #667eea, #764ba2);
   margin: 0;
-  height: 100vh;
+  font-family: Arial;
 }
 
-.container {
-  width: 400px;
-  margin: 50px auto;
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg,#667eea,#764ba2);
+  padding: 20px;
+}
+
+.app.dark {
+  background: #111;
+  color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.form-box {
   background: white;
   padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  text-align: center;
+  max-width: 450px;
+  margin: auto;
+  border-radius: 10px;
 }
 
-.form input,
-.form select {
+.app.dark .form-box {
+  background: #222;
+}
+
+input, textarea, select {
   width: 100%;
-  padding: 10px;
-  margin-top: 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  padding: 8px;
+}
+
+.radio, .skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
 }
 
 button {
-  margin-top: 15px;
-  width: 100%;
-  padding: 12px;
-  background: #667eea;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
+  padding: 10px;
   cursor: pointer;
-}
-
-button:hover {
-  background: #5a67d8;
-}
-
-.preview {
-  margin-top: 20px;
-  background: #f3f4f6;
-  padding: 12px;
-  border-radius: 8px;
 }
