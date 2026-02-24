@@ -14,13 +14,11 @@ function StudentForm() {
 
   const [darkMode, setDarkMode] = useState(false);
 
-  // input change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // checkbox skills
   const handleSkillChange = (e) => {
     const { value, checked } = e.target;
 
@@ -37,7 +35,18 @@ function StudentForm() {
     }
   };
 
-  // submit
+  const handleCancel = () => {
+    setFormData({
+      firstName: "",
+      lastName: "",
+      dob: "",
+      gender: "",
+      address: "",
+      state: "",
+      skills: []
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -63,32 +72,23 @@ Skills: ${formData.skills.length ? formData.skills.join(", ") : "None"}
 `;
 
     alert(message);
-  };
-
-  // cancel
-  const handleCancel = () => {
-    setFormData({
-      firstName: "",
-      lastName: "",
-      dob: "",
-      gender: "",
-      address: "",
-      state: "",
-      skills: []
-    });
+    handleCancel(); // auto clear form
   };
 
   return (
     <div className={darkMode ? "app dark" : "app"}>
 
-      <header className="header">
+      <header className="page-header">
         <h3>Welcome to CU</h3>
-        <button onClick={() => setDarkMode(!darkMode)}>
+        <button
+          className="theme-toggle"
+          onClick={() => setDarkMode(!darkMode)}
+        >
           {darkMode ? "☀️" : "🌙"}
         </button>
       </header>
 
-      <div className="form-box">
+      <div className="form-container">
         <h2>Student Registration Form</h2>
 
         <form onSubmit={handleSubmit}>
@@ -110,9 +110,9 @@ Skills: ${formData.skills.length ? formData.skills.join(", ") : "None"}
           />
 
           <label>Gender</label>
-          <div className="radio">
+          <div className="radio-group">
             {["Male","Female","Other"].map(g => (
-              <label key={g}>
+              <label key={g} className="radio-item">
                 <input
                   type="radio"
                   name="gender"
@@ -130,35 +130,46 @@ Skills: ${formData.skills.length ? formData.skills.join(", ") : "None"}
 
           <label>State</label>
           <select name="state" value={formData.state} onChange={handleChange} required>
-            <option value="">Select</option>
+            <option value="">Select State</option>
             <option>Karnataka</option>
             <option>Tamil Nadu</option>
             <option>Kerala</option>
             <option>Maharashtra</option>
+            <option>Himachal Pradesh</option>
           </select>
 
           <label>Skills</label>
-          <div className="skills">
-            {["Java","Python","AI","ML","DevOps","Cyber Security","C++","Cloud"].map(skill => (
-              <label key={skill}>
+          <div className="skills-list">
+            {[
+              "Java",
+              "Python",
+              "Machine Learning",
+              "Artificial Intelligence",
+              "DevOps",
+              "Cyber Security",
+              "C++",
+              "Cloud Computing"
+            ].map(skill => (
+              <label key={skill} className="skill-row">
                 <input
                   type="checkbox"
                   value={skill}
                   checked={formData.skills.includes(skill)}
                   onChange={handleSkillChange}
                 />
-                {skill}
+                <span>{skill}</span>
               </label>
             ))}
           </div>
 
-          <div className="buttons">
+          <div className="button-group">
             <button type="submit">Submit</button>
             <button type="button" onClick={handleCancel}>Cancel</button>
           </div>
 
         </form>
       </div>
+
     </div>
   );
 }
